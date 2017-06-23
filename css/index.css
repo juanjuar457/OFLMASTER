@@ -1,0 +1,56 @@
+body {
+  font-family: sans-serif;
+  padding: 10px;
+  background: #1976D2;
+}
+
+h2, h3 {
+  margin: 0;
+}
+
+h2 {
+  color: white;
+}
+
+input {
+  display: block;
+}
+#ofl-header {
+  background-color: lightblue;
+  text-align: center;
+  width: 100%;
+  font-weight: 600px;
+  margin-top: 0;
+}
+
+#inputlist {
+  display: inline-flex;
+}
+
+#newMaterial {
+  padding: 10px;
+  margin: 10px;
+  background-color: grey;
+  word-spacing: 10px;
+  display: block;
+}
+
+#modal {
+  color: #000;
+}
+
+footer {
+  color: black;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  font-weight: 600;;
+}
+
+
+
+/*#oflplaceholderbutton {*/
+  /*!*display: inline-block;  CLEAR BUTTON PLACEHOLDER *!*/
+/*}*/
