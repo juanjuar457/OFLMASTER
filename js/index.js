@@ -17,9 +17,9 @@ import store from './store';
 
 ReactDOM.render(
     <Provider store={store}>
-        <MaterialForm />
+        <Container/>
     </Provider>,
-    document.getElementById('root')
+    document.getElementsByTagName('main')
 );
 
 

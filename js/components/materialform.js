@@ -7,14 +7,9 @@ import request from 'superagent';
 class MaterialForm extends React.Component {
     constructor(props){
         super(props);
-        this.state = { isOpen: false };
+
     }
 
-    // removeMaterial() {
-    //
-    //
-    //     }
-    // }
 
     addMaterial() {
         let material = {
@@ -45,17 +40,7 @@ class MaterialForm extends React.Component {
     }
 //Todo: fix the warning we're getting here
     render() {
-        let materials = this.props.materials.map((material, index, key)=> {
-            // let key = {index}
-            return (
-                <div className="row">
-                   <div className="col-md-2">{material.vendor}</div>
-                    <div className="col-md-2">{material.quantity}</div>
-                    <div className="col-md-2">{material.productName}</div>
-                    <div className="col-md-2">{material.catalogNumber}</div>
-                    <div className="col-md-2">{material.units}</div>
-                </div>)
-        });
+
         //store this as state. make reducer that if its empty it popultes it, if its full it just uses it
         //singletons
         let unitTypes = [
@@ -85,12 +70,6 @@ class MaterialForm extends React.Component {
                     <button  className="col-md-1" type="button" onClick={this.addMaterial.bind(this)}>add</button>
                     <button  className="col-md-1" type="button" onClick={this.clearForm.bind(this)} >clear</button>
                     <button  className="col-md-1" type="button">remove</button>
-                </div>
-                <div id="newMaterial">
-                    {materials}
-                </div>
-                <div id="oflfooter">
-                    <footer>footer placeholder</footer>
                 </div>
             </div>
         );
