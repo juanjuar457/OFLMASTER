@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import OflModal from './oflmodal';
+import OflModal from './oflmodal'; // not being imported atm
 import {addMaterial} from '../actions/index';
 import request from 'superagent';
 
@@ -10,10 +10,14 @@ class MaterialForm extends React.Component {
         this.state = { isOpen: false };
     }
 
-
+    // removeMaterial() {
+    //
+    //
+    //     }
+    // }
 
     addMaterial() {
-        var material = {
+        let material = {
             vendor: this.refs.vendor.value,
             quantity: this.refs.quantity.value,
             productName: this.refs.productName.value,
@@ -36,12 +40,12 @@ class MaterialForm extends React.Component {
     sendData() {
         request.get('/')
             .end(function (err, res){
-                console.log("ajax yo pinga");  //oh snap it works..
+                console.log("ajax here");  // todo: add the proper syntax with thunk/ superagent
             });
     }
-
+//Todo: fix the warning we're getting here
     render() {
-        var materials = this.props.materials.map((material, index, key)=> {
+        let materials = this.props.materials.map((material, index, key)=> {
             // let key = {index}
             return (
                 <div className="row">
@@ -60,8 +64,8 @@ class MaterialForm extends React.Component {
             "milliliters",
             "misc"
         ];
-
-        var unitOptions = unitTypes.map((unitType, index)=> {
+        //todo: add the material units to the material on the form when added.
+        let unitOptions = unitTypes.map((unitType, index)=> {
                 return (<option value={unitType}>{unitType}</option>
                )
         });
@@ -80,6 +84,7 @@ class MaterialForm extends React.Component {
                     </select>
                     <button  className="col-md-1" type="button" onClick={this.addMaterial.bind(this)}>add</button>
                     <button  className="col-md-1" type="button" onClick={this.clearForm.bind(this)} >clear</button>
+                    <button  className="col-md-1" type="button">remove</button>
                 </div>
                 <div id="newMaterial">
                     {materials}
@@ -253,4 +258,40 @@ export default connect(mapStateToProps)(MaterialForm);
 {/*//     }*/}
 {/*// });*/}
 
+// >>>>>>>>>>>>>>>>>>>>>>>
+// DELETE DIV EX>>>>>>>>>>
+// >>>>>>>>>>>>>>>>>>>>>>>
 
+// class Example extends React.Component {
+//     constructor(){
+//         this.state = {
+//             data: [
+//                 {id:1, name: 'Hello'},
+//                 {id:2, name: 'World'},
+//                 {id:3, name: 'How'},
+//                 {id:4, name: 'Are'},
+//                 {id:5, name: 'You'},
+//                 {id:6, name: '?'}
+//             ]
+//         }
+//     }
+//     delete(item){
+//         const newState = this.state.data;
+//         if (newState.indexOf(item) > -1) {
+//             newState.splice(newState.indexOf(item), 1);
+//             this.setState({data: newState})
+//         }
+//     }
+//     render(){
+//         const listItem = this.state.data.map((item)=>{
+//             return <div key={item.id}>
+//                 <span>{item.name}</span> <button onClick={this.delete.bind(this, item)}>Delete</button>
+//             </div>
+//         })
+//         return <div>
+//             {listItem}
+//         </div>
+//     }
+// }
+//
+// React.render(<Example />, document.getElementById('container'));

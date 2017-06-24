@@ -1,0 +1,114 @@
+
+OFL issues - 
+text on entries after the 2nd have text all together, no word seperation. 
+clear button not working... 
+modal is broken..
+send data still works... yay
+-kept my repo off github for now, will make a private repo eventually. 
+
+TODO: 
+remove material + tie to ajax call 
+add to DB on add + ""
+
+
+// addDropDownUnits() {
+    //     let dropDownUnits = {
+    //         grams: this.refs.grams.value,
+    //         kilograms: this.refs. kilograms.value,
+    //         milliliters: this.refs.milliliters.value,
+    //         misc: this.refs.misc.value
+    //     }
+    // }
+
+have to use run build!!!! forgot for a sec.... 
+header and home button! 
+
+addMaterial() saved in a var w/ value refs pointing to the 
+inputs that the user puts in, **from strings
+
+then dispatches them as props
+also calls the clearform func to clear the form on every add,
+still need the button though... 
+Clear on incomplete add.. 
+*** THE DISPATCH WAS BEING USED
+>>materialform.js is the center of the app... not sure if 1 comp 
+holding all this info is a good thing????
+
+>see where other proj does the ajax, weird b/c its not a form, its adding 
+an image to get the thing rolling in that pic-add app. 
+
+6/19
+whats the news?? w/ other students?? 
+OFL is my cross, uploading on my personal dropbox to keep private
+-now have to npm run build whenever a change is made! OMG the time
+-Main concern is getting back to how it was, then expand it out..
+timestamps, urgent button etc... 
+MOdal and Drop Down
+
+nest down in a col 
+row in a col, 
+//granular bootsrap for getting 1/2's and breaking to smaller numbers 
+//don't go to deep or you need to redo your strat, out of control.. once is okay 
+
+<div className="col-md-1">
+                        <div className="row">
+                            <div className="col-md-6"></div> //each is a half...
+                            <div className="col-md-6"></div>
+                        </div>
+
+
+look at how thunk comes back!! use superagent for the ajax cal itself! 
+look up examples in text on thunk. 
+maybe comps don't care how its declared the action handles the async mvmnt 
+-- 6am dog walk 11pm sleep NO FUCKING PHONE 
+
+
+6/23 - OFL stuff
+gliph icon remove button won't work, use as regular delete! 
+
+make DEl work by selecting the material vs rendering on each new material added to the 
+form.. 
+
+remove a div when its selected from the remove button!? 
+
+THe form is cleared out via the refs, clear out material itself from 
+whatever its being rendered in with. 
+to have the delete the items added to the form MUST be kept in state, so they 
+can be pointed to from a method and spliced out
+
+OR overwritten with a new state when the delete is pressed to make sure the page is rendered 
+with the selected item to be deleted GONE from the page.. 
+
+
+shouldn't need react Router for comps, page is only stuck on material form.. 
+
+maybe only page to update the deliver info and perhaps for the guest / admin functions. 
+
+put in the thunk & superagent.. 
+
+set up redux as well, state needs to be taken into account.. 
+
+TO DO'S 
+I. get the units drop down to render with new material when added. need to tie in 
+with the correct method. 
+II. Delete button
+III. add home button
+IV. main page (for landing and page for admin funcitons. )
+V. Tie this sukcer to a redux store. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
