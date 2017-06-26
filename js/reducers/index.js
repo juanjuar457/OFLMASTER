@@ -1,10 +1,23 @@
 import * as actions from '../actions/index';
 
 const initialState = {
-    materials: [{ name: 'Example material 1'}] }; //problem could be here, array of obj inside obj?
+
+    materials: [
+        // {
+        //     vendor: "",
+        //     quantity: "", //sometimes they have '3UI' for units
+        //     productName: "",
+        //     catalogNumber: "",
+        //     unitSize: "", //fix the underscore
+        //     units: "",
+        //     onBackOrder: false
+        // }
+    ]
+}
+//problem could be here, array of obj inside obj?
 
 
-export const oflMaterialReducer = (state=initialState, action) => {
+const oflMaterialReducer = (state=initialState, action) => {
     if (action.type === actions.ADD_MATERIAL) {
         return Object.assign({}, state, {
             materials: [...state.materials, action.material]
@@ -14,7 +27,7 @@ export const oflMaterialReducer = (state=initialState, action) => {
     return state;
 };
 
-
+export default oflMaterialReducer;
 
 //structure used on 21 to 46 is the same structure every reducer
 //you should set a default state,

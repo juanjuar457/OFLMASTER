@@ -56,34 +56,32 @@ class MaterialForm extends React.Component {
         });
 
         return (
-            <div id="ofl-header">
-                <h1>Order For Later</h1>
-                <div id="inputlist">
-                    <input className="col-md-2" id="vendor" type="text" ref="vendor"  placeholder="Enter Vendor" />
-                    <input  className="col-md-1" id="quantity" type="text" ref="quantity" placeholder="Enter Quantity" />
-                    <input  className="col-md-2" id="productName" type="text" ref="productName" placeholder="Enter Product Name" />
-                    <input  className="col-md-2" id="catalogNumber" type="text" ref="catalogNumber" placeholder="Enter Catalog Numnber" />
-                    <input  className="col-md-1" id="units" type="text" ref="units" placeholder="Enter Units" />
-                    <select className="col-md-2" id="unitTypes">
-                        {unitOptions}
-                    </select>
-                    <button  className="col-md-1" type="button" onClick={this.addMaterial.bind(this)}>add</button>
-                    <button  className="col-md-1" type="button" onClick={this.clearForm.bind(this)} >clear</button>
-                    <button  className="col-md-1" type="button">remove</button>
-                </div>
+            <div id="inputlist" className="row">
+                <input className="col-md-2" id="vendor" type="text" ref="vendor"  placeholder="Enter Vendor" />
+                <input  className="col-md-1" id="quantity" type="text" ref="quantity" placeholder="Enter Quantity" />
+                <input  className="col-md-2" id="productName" type="text" ref="productName" placeholder="Enter Product Name" />
+                <input  className="col-md-2" id="catalogNumber" type="text" ref="catalogNumber" placeholder="Enter Catalog Numnber" />
+                <input  className="col-md-1" id="units" type="text" ref="units" placeholder="Enter Units" />
+                <select className="col-md-2" id="unitTypes">
+                    {unitOptions}
+                </select>
+                <button  className="col-md-1" type="button" onClick={this.addMaterial.bind(this)}>add</button>
+                <button  className="col-md-1" type="button" onClick={this.clearForm.bind(this)} >clear</button>
             </div>
         );
     }
 }
-MaterialForm.defaultProps = {
-    title: 'Order For Later'
-};
+// MaterialForm.defaultProps = {
+//     title: 'Order For Later'
+// };
 
-const mapStateToProps = state => ({
-    materials: state.materials
-});
+// const mapStateToProps = state => {
+//     console.log(state);
+//     return {};
+//     // materials: state.materials
+//     };
 
-export default connect(mapStateToProps)(MaterialForm);
+export default connect()(MaterialForm);
 
 //unused ajax call
 // $.ajax( {

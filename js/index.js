@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import MaterialForm from './components/materialform';
+import Container from './components/container';
 import store from './store';
 
 // shove me in a container comp
@@ -19,7 +19,7 @@ ReactDOM.render(
     <Provider store={store}>
         <Container/>
     </Provider>,
-    document.getElementsByTagName('main')
+    document.getElementById('main')
 );
 
 

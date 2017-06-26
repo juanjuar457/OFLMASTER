@@ -18,21 +18,15 @@ input {
 #ofl-header {
   background-color: lightblue;
   text-align: center;
-  width: 100%;
-  font-weight: 600px;
-  margin-top: 0;
+  font-weight: 600;
 }
 
 #inputlist {
   display: inline-flex;
 }
 
-#newMaterial {
-  padding: 10px;
-  margin: 10px;
+.newMaterial {
   background-color: grey;
-  word-spacing: 10px;
-  display: block;
 }
 
 #modal {

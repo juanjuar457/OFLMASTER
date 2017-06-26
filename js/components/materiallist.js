@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
 class MaterialList extends React.Component {
     constructor(props){
         super(props);
@@ -8,7 +8,7 @@ class MaterialList extends React.Component {
         let materials = this.props.materials.map((material, index, key)=> {
             // let key = {index}
             return (
-                <div className="row">
+                <div className="row newMaterial">
                     <div className="col-md-2">{material.vendor}</div>
                     <div className="col-md-2">{material.quantity}</div>
                     <div className="col-md-2">{material.productName}</div>
@@ -17,7 +17,7 @@ class MaterialList extends React.Component {
                 </div>)
         });
         return(
-            <div id="newMaterial">
+            <div>
                 {materials}
             </div>
         )
