@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import OflModal from './oflmodal'; // not being imported atm
+// import OflModal from './oflmodal'; // not being imported atm
 import {addMaterial} from '../actions/index';
 import request from 'superagent';
 
@@ -9,7 +9,6 @@ class MaterialForm extends React.Component {
         super(props);
 
     }
-
 
     addMaterial() {
         let material = {
@@ -29,7 +28,6 @@ class MaterialForm extends React.Component {
         this.refs.productName.value = "";
         this.refs.catalogNumber.value = "";
         this.refs.units.value = "";
-
     }
 
     sendData() {

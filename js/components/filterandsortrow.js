@@ -1,17 +1,16 @@
 import React from 'react';
 
 
-
-
-class filterAndSortRow extends React.Component {
+class FilterAndSortRow extends React.Component {
     constructor(props) {
         super(props);
     }
-    render()
+    render ()
     {
         return(
             <div>
+
             </div>
         )
-    }
+    };
 }

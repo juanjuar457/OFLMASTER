@@ -5,6 +5,13 @@ export const addMaterial = material => ({
 });
 
 
+export const DEL_MATERIAL = 'DEL_MATERIAL';
+export const delMaterial = id => ({
+    type: DEL_MATERIAL,
+    id
+});
+
+
 //TODO edit for use with materialForm.js Loads initial state of OFL Form
 // export const FETCH_OFL_FORM_SUCCESS = 'FETCH_OFL_FORM_SUCCESS';
 // export const fetchOflFormSuccess = materialForm => ({
