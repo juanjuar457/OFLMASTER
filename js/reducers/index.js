@@ -14,6 +14,7 @@ const initialState = {
         // }
     ]
 }
+
 //problem could be here, array of obj inside obj?
 
 
@@ -27,7 +28,7 @@ const oflMaterialReducer = (state=initialState, action) => {
     }
 
     else if (action.type === actions.DEL_MATERIAL){
-        console.log("call delete")
+        console.log("call delete");
         let materials = state.materials.filter(
             (item) => {
                 return item.id !== action.id;
@@ -37,9 +38,12 @@ const oflMaterialReducer = (state=initialState, action) => {
             materials: materials
         });
     }
+
+    else if (action.type === actions.FETCH_MATERIALS){
+        return action.materials;
+    }
     return state;
 };
-
 
 
 export default oflMaterialReducer;

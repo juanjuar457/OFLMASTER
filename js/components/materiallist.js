@@ -1,11 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {delMaterial} from '../actions/index';
+import {delMaterial, FETCH_MATERIALS} from '../actions/index';
 
 class MaterialList extends React.Component {
     constructor(props){
         super(props);
     }
+
+    getMaterials() {
+        this.props.dispatch(fetchMaterials());
+    }
+
     delMaterial(id) {
         this.props.dispatch(delMaterial(id));
     }
@@ -23,6 +28,7 @@ class MaterialList extends React.Component {
                     <div className="col-md-2">{material.catalogNumber}</div>
                     <div className="col-md-2">{material.units}</div>
                     <div className="col-md-2"><button type="button" onClick={this.delMaterial.bind(this, material.id)}>DEL</button></div>
+                    <div className="col-md-2"><button type="button" onClick={this.getMaterial.bind(this, materials)}>GET</button></div>
                 </div>)
         });
         return(
