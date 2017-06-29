@@ -39,8 +39,10 @@ const oflMaterialReducer = (state=initialState, action) => {
         });
     }
 
-    else if (action.type === actions.FETCH_MATERIALS){
-        return action.materials;
+    else if (action.type === actions.FETCH_MATERIALS_SUCCESS){
+        return Object.assign({}, state, {
+            materials: action.materials
+        });
     }
     return state;
 };

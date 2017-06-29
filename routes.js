@@ -37,10 +37,10 @@ module.exports = {
             .limit(1000)
             .exec()
             .then(materials => {
-                res.json({
-                    materials: materials.map(
+                res.json(
+                     materials.map(
                         (material) => material.apiRepr())
-                });
+                );
             })
             .catch(
             err => {
