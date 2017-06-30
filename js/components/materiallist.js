@@ -54,8 +54,5 @@ export default connect(mapStateToProps)(MaterialList);
 // put a button on the line that when you click it, it becomes a drop
 //down that has those state selectable and it changes to those other states.
 //changes the state of that particular material.
-
-
-
-
+//look up how to get the app up and keep in mind how to do the i
 
