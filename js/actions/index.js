@@ -6,6 +6,28 @@ export const addMaterial = material => ({
     material
 });
 
+///////////////////////////////
+/////FOR DB persistence////////
+///////////////////////////////
+
+export const DEL_SERVER_MATERIAL_SUCCESS = 'DEL_SERVER_MATERIAL_SUCCESS ';
+export const delServerMaterialSuccess = id => ({
+    type: DEL_SERVER_MATERIAL_SUCCESS,
+    id
+});
+
+
+export const DEL_SERVER_MATERIAL = 'DEL_SERVER_MATERIAL';
+export const delServerMaterial = () => dispatch => {
+    fetch('/materials/id').then(res => {
+        if(!res.ok){
+            return Promise.reject(res.statusText);
+        }
+        return res.json();
+    }).then(material => {
+        dispatch(delServerMaterialSuccess(material));
+    });
+};
 
 export const DEL_MATERIAL = 'DEL_MATERIAL';
 export const delMaterial = id => ({
@@ -33,7 +55,25 @@ export const fetchMaterials = () => dispatch => {
     });
 };
 
-//TODO edit for use with materialForm.js Loads initial state of OFL Form
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //this is mocking the function of loading the board from the trello app via an external api..
 // export const fetchMaterialForm = () => dispatch => {

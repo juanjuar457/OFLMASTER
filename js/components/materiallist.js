@@ -1,23 +1,24 @@
 import React from 'react';
-// import { connect } from 'react-redux';
-import {delMaterial, fetchMaterials} from '../actions/index';
+import { connect } from 'react-redux';
+import {delMaterial, fetchMaterials, delServerMaterial} from '../actions/index';
 
 class MaterialList extends React.Component {
     constructor(props){
         super(props);
     }
     //
-    // updateServerPlaceholder() {
+    // updateServerPlaceholder() {3l
     //     this.props.dispatch(updateServerPlaceholder)
     // }
     //
-    // deleteServerPlaceholder(){
-    //     this.props.dispatch(deleteServerPlaceholder)
-    //     //where is the bind supposed to go?
-    //     //
-    // }
 
+    //change it to a comp life cycle method insead?
+    componentWillMount(){
+        this.props.dispatch(deleteMaterialServer())
+        //where is the bind supposed to go? >> error is no bind available!
+    }
 
+    //handles initial load
     componentDidMount() {
         this.props.dispatch(fetchMaterials());
     }
@@ -38,15 +39,15 @@ class MaterialList extends React.Component {
                     <div className="col-md-2">{material.productName}</div>
                     <div className="col-md-2">{material.catalogNumber}</div>
                     <div className="col-md-2">{material.units}/div>
-                    <div className="col-md-2"><button type="button" onClick={this.delMaterial.bind(this, material.id)}>DEL</button></div>
-                    {/*<div className="col-md-2"><button type="button" onClick={this.getMaterial.bind(this, materials)}>GET</button></div>*/}
+                    <div className="col-md-2"><button type="button" onChange={this.deleteMaterialServer.bind(this, material.id)}
+                                                      onClick={this.delMaterial.bind(this, material.id)}>DEL</button></div>
                 </div>)
         });
         return(
             <div>
                 {materials}
             </div>
-        )
+        );
     }
 }
 
@@ -58,8 +59,6 @@ const mapStateToProps = state => ({
     materials: state.materials
 });
 
-export default connect(mapStateToProps)(MaterialList);
+export default connect()(MaterialList);
 
-
-
-
+//Red errors! - 7/2 -

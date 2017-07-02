@@ -44,6 +44,13 @@ const oflMaterialReducer = (state=initialState, action) => {
             materials: action.materials
         });
     }
+
+    else if (action.type === actions.DEL_SERVER_MATERIAL_SUCCESS)
+        console.log('got to Del server material');
+        return Object.assign({}, state, {
+            //splice acction happens here. keep the obj.assign to keep state immutable.
+        });
+
     return state;
 };
 
