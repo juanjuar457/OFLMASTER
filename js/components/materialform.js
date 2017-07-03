@@ -69,15 +69,15 @@ class MaterialForm extends React.Component {
         );
     }
 }
-// MaterialForm.defaultProps = {
-//     title: 'Order For Later'
-// };
+MaterialForm.defaultProps = {
+    title: 'Order For Later'
+};
 
-// const mapStateToProps = state => {
-//     console.log(state);
-//     return {};
-//     // materials: state.materials
-//     };
+const mapStateToProps = state => {
+    console.log(state);
+    return {};
+    materials: state.materials
+    };
 
 export default connect()(MaterialForm);
 

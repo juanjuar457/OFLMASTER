@@ -18,14 +18,14 @@ export const delServerMaterialSuccess = id => ({
 
 
 export const DEL_SERVER_MATERIAL = 'DEL_SERVER_MATERIAL';
-export const delServerMaterial = () => dispatch => {
-    fetch('/materials/id').then(res => {
+export const delServerMaterial = (id) => dispatch => {
+    fetch('/materials', {method: "DELETE", data: {id: id}}).then(res => {
         if(!res.ok){
             return Promise.reject(res.statusText);
         }
         return res.json();
-    }).then(material => {
-        dispatch(delServerMaterialSuccess(material));
+    }).then(id => {
+        dispatch(delServerMaterialSuccess(id));
     });
 };
 

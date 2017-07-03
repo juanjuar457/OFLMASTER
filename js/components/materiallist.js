@@ -12,11 +12,11 @@ class MaterialList extends React.Component {
     // }
     //
 
-    //change it to a comp life cycle method insead?
-    componentWillMount(){
-        this.props.dispatch(deleteMaterialServer())
-        //where is the bind supposed to go? >> error is no bind available!
-    }
+    //change it to a comp life cycle method instead?
+    // componentWillMount(){
+    //
+    //     //where is the bind supposed to go? >> error is no bind available!
+    // }
 
     //handles initial load
     componentDidMount() {
@@ -29,18 +29,15 @@ class MaterialList extends React.Component {
 
     render() {
         console.log(typeof(this.props.materials));
-        let materials = this.props.materials.map((material, index, key)=> {
-            // let key = {index}
-            //
+        let materials = this.props.materials.map(material, ()=> {
             return (
                 <div className="row newMaterial">
                     <div className="col-md-2">{material.vendor}</div>
                     <div className="col-md-2">{material.quantity}</div>
                     <div className="col-md-2">{material.productName}</div>
                     <div className="col-md-2">{material.catalogNumber}</div>
-                    <div className="col-md-2">{material.units}/div>
-                    <div className="col-md-2"><button type="button" onChange={this.deleteMaterialServer.bind(this, material.id)}
-                                                      onClick={this.delMaterial.bind(this, material.id)}>DEL</button></div>
+                    <div className="col-md-2">{material.units}</div>
+                    <div className="col-md-2"><button type="button" onClick={this.delMaterial.bind(this, material.id)}>DEL</button></div>
                 </div>)
         });
         return(

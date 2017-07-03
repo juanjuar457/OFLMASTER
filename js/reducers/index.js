@@ -13,7 +13,7 @@ const initialState = {
         //     onBackOrder: false
         // }
     ]
-}
+};
 
 //problem could be here, array of obj inside obj?
 
@@ -41,7 +41,7 @@ const oflMaterialReducer = (state=initialState, action) => {
 
     else if (action.type === actions.FETCH_MATERIALS_SUCCESS){
         return Object.assign({}, state, {
-            materials: action.materials
+            materials: action.materials ? action.materials : []
         });
     }
 
