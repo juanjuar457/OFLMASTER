@@ -1,4 +1,6 @@
 // import routes from './routes.js';
+require('es6-promise').polyfill();
+
 
 export const ADD_MATERIAL = 'ADD_MATERIAL';
 export const addMaterial = material => ({
@@ -10,28 +12,29 @@ export const addMaterial = material => ({
 /////FOR DB persistence////////
 ///////////////////////////////
 
-export const DEL_SERVER_MATERIAL_SUCCESS = 'DEL_SERVER_MATERIAL_SUCCESS ';
-export const delServerMaterialSuccess = id => ({
-    type: DEL_SERVER_MATERIAL_SUCCESS,
-    id
-});
+// export const DEL_SERVER_MATERIAL_SUCCESS = 'DEL_SERVER_MATERIAL_SUCCESS ';
+// export const delServerMaterialSuccess = id => ({
+//     type: DEL_SERVER_MATERIAL_SUCCESS,
+//     id
+// });
 
 
-export const DEL_SERVER_MATERIAL = 'DEL_SERVER_MATERIAL';
-export const delServerMaterial = (id) => dispatch => {
-    fetch('/materials', {method: "DELETE", data: {id: id}}).then(res => {
+export const DEL_MATERIAL = 'DEL_MATERIAL';
+export const delMaterial = (id) => dispatch => {
+    console.log("got to the del- What now??")
+    fetch('/', {method: "DELETE", data: {id: id}}).then(res => {
         if(!res.ok){
             return Promise.reject(res.statusText);
         }
         return res.json();
     }).then(id => {
-        dispatch(delServerMaterialSuccess(id));
+        dispatch(delMaterialSuccess(id));
     });
 };
 
-export const DEL_MATERIAL = 'DEL_MATERIAL';
-export const delMaterial = id => ({
-    type: DEL_MATERIAL,
+export const DEL_MATERIAL_SUCCESS = 'DEL_MATERIAL_SUCCESS';
+export const delMaterialSuccess = id => ({
+    type: DEL_MATERIAL_SUCCESS,
     id
 });
 

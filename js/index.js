@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import Container from './components/container';
 import store from './store';
-
+require('es6-promise').polyfill();
 // shove me in a container comp
 // toggleModal() {
 //     this.setState({

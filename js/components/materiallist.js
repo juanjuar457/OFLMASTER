@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {delMaterial, fetchMaterials, delServerMaterial} from '../actions/index';
-
+import {delMaterial, fetchMaterials} from '../actions/index';
+require('es6-promise').polyfill();
 class MaterialList extends React.Component {
     constructor(props){
         super(props);
@@ -29,7 +29,7 @@ class MaterialList extends React.Component {
 
     render() {
         console.log(typeof(this.props.materials));
-        let materials = this.props.materials.map(material, ()=> {
+        let materials = this.props.materials.map((material,index,key)=> {
             return (
                 <div className="row newMaterial">
                     <div className="col-md-2">{material.vendor}</div>
@@ -56,6 +56,4 @@ const mapStateToProps = state => ({
     materials: state.materials
 });
 
-export default connect()(MaterialList);
-
-//Red errors! - 7/2 -
+export default connect(mapStateToProps)(MaterialList);
