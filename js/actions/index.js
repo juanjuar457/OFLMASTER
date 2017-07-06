@@ -1,12 +1,29 @@
 // import routes from './routes.js';
 require('es6-promise').polyfill();
+// import axios from 'axios';
+
+
+export const ADD_MATERIAL_SUCCESS = 'ADD_MATERIAL_SUCCESS';
+export const addMaterialSuccess = material => ({
+    type: ADD_MATERIAL_SUCCESS,
+    material
+});
 
 
 export const ADD_MATERIAL = 'ADD_MATERIAL';
-export const addMaterial = material => ({
-    type: ADD_MATERIAL,
-    material
-});
+export const addMaterial = (material) => dispatch => {
+    console.log({...material});
+    fetch(`/savematerial`,  {method: "POST", body: JSON.stringify(material), headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    }})
+        .then(res => {
+            return res.json();
+        })
+        .then(material => {
+            dispatch(addMaterialSuccess(material));
+        });
+};
 
 ///////////////////////////////
 /////FOR DB persistence////////
@@ -22,15 +39,19 @@ export const addMaterial = material => ({
 export const DEL_MATERIAL = 'DEL_MATERIAL';
 export const delMaterial = (id) => dispatch => {
     console.log("got to the del- What now??")
-    fetch('/', {method: "DELETE", data: {id: id}}).then(res => {
-        if(!res.ok){
-            return Promise.reject(res.statusText);
-        }
+    //change this for axios to use the delte, isomorphic fetch has no delete!
+    fetch(`/deletematerial/${id}`,  {method: "DELETE"})
+    .then(res => {
         return res.json();
-    }).then(id => {
-        dispatch(delMaterialSuccess(id));
+    })
+    .then(id => {
+        console.log(id);
+        dispatch(fetchMaterials());
     });
 };
+
+//for ray rsmith  check on slack
+//send req to endpoint, modelname.find send back as json res
 
 export const DEL_MATERIAL_SUCCESS = 'DEL_MATERIAL_SUCCESS';
 export const delMaterialSuccess = id => ({
@@ -58,6 +79,18 @@ export const fetchMaterials = () => dispatch => {
     });
 };
 
+
+// export const FETCH_MATERIALS = 'FETCH_MATERIALS';
+// export const fetchMaterials = () => dispatch => {
+//     axios.get('/materials').then(res => {  //tried changing here
+//         if(!res.ok){
+//             return Promise.reject(res.statusText);
+//         }
+//         return res.json();
+//     }).then(material => {
+//         dispatch(fetchMaterialsSuccess(material));
+//     });
+// };
 
 
 

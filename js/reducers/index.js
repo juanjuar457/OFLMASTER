@@ -19,7 +19,7 @@ const initialState = {
 
 
 const oflMaterialReducer = (state=initialState, action) => {
-    if (action.type === actions.ADD_MATERIAL) {
+    if (action.type === actions.ADD_MATERIAL_SUCCESS) {
         console.log("not delete");
         console.log(state);
         return Object.assign({}, state, {

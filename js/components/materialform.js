@@ -17,7 +17,9 @@ class MaterialForm extends React.Component {
             productName: this.refs.productName.value,
             catalogNumber: this.refs.catalogNumber.value,
             units: this.refs.units.value,
+            unitSize: this.state.unitOptions.value
         };
+        console.log(unitSize);
         this.props.dispatch(addMaterial(material));
         this.clearForm();
     }
@@ -33,25 +35,32 @@ class MaterialForm extends React.Component {
     sendData() {
         request.get('/')
             .end(function (err, res){
-                console.log("ajax here");  // todo: add the proper syntax with thunk/ superagent
+                console.log("ajax here");
             });
     }
-//Todo: fix the warning we're getting here
-    render() {
 
-        //store this as state. make reducer that if its empty it popultes it, if its full it just uses it
-        //singletons
+     handleChange(e)  {
+        console.log(e.target.value);
+        let value = this.state.unitTypes.filter((unit) => {
+            return unity.key === e.target.value
+        });
+        console.log(value[0].value);
+    };
+
+    render() {
         let unitTypes = [
             "grams",
             "kilograms",
             "milliliters",
             "misc"
         ];
-        //todo: add the material units to the material on the form when added.
+
+
         let unitOptions = unitTypes.map((unitType, index)=> {
-                return (<option value={unitType}>{unitType}</option>
+                return (<option key={index} value={unitType}>{unitType}</option>
                )
         });
+        console.log(unitOptions);  //4 NULL OBJECTS!
 
         return (
             <div id="inputlist" className="row">
@@ -60,7 +69,7 @@ class MaterialForm extends React.Component {
                 <input  className="col-md-2" id="productName" type="text" ref="productName" placeholder="Enter Product Name" />
                 <input  className="col-md-2" id="catalogNumber" type="text" ref="catalogNumber" placeholder="Enter Catalog Numnber" />
                 <input  className="col-md-1" id="units" type="text" ref="units" placeholder="Enter Units" />
-                <select className="col-md-2" id="unitTypes">
+                <select onChange={this.handleChange} className="col-md-2" id="unitTypes">
                     {unitOptions}
                 </select>
                 <button  className="col-md-1" type="button" onClick={this.addMaterial.bind(this)}>add</button>
@@ -77,7 +86,7 @@ const mapStateToProps = state => {
     console.log(state);
     return {};
     materials: state.materials
-    };
+};
 
 export default connect()(MaterialForm);
 
@@ -92,7 +101,17 @@ export default connect()(MaterialForm);
 // });
 
 
-
+//
+// <div>
+//     <select defaultValue={this.state.selectValue}
+//             onChange={this.handleChange}
+//     >
+//         <option value="Orange">Orange</option>
+//         <option value="Radish">Radish</option>
+//         <option value="Cherry">Cherry</option>
+//     </select>
+//     <p>{message}</p>
+// </div>
 
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

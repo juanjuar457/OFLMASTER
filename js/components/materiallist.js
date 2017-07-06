@@ -18,25 +18,26 @@ class MaterialList extends React.Component {
     //     //where is the bind supposed to go? >> error is no bind available!
     // }
 
-    //handles initial load
+
+
     componentDidMount() {
         this.props.dispatch(fetchMaterials());
     }
-
     delMaterial(id) {
         this.props.dispatch(delMaterial(id));
     }
 
     render() {
         console.log(typeof(this.props.materials));
-        let materials = this.props.materials.map((material,index,key)=> {
+        let materials = this.props.materials.map((material,index)=> {
             return (
-                <div className="row newMaterial">
+                <div key={index} className="row newMaterial">
                     <div className="col-md-2">{material.vendor}</div>
-                    <div className="col-md-2">{material.quantity}</div>
-                    <div className="col-md-2">{material.productName}</div>
+                    <div className="col-md-1">{material.quantity}</div>
+                    <div className="col-md-1">{material.productName}</div>
                     <div className="col-md-2">{material.catalogNumber}</div>
                     <div className="col-md-2">{material.units}</div>
+                    <div className="col-md-2">{material.unitSize}</div>
                     <div className="col-md-2"><button type="button" onClick={this.delMaterial.bind(this, material.id)}>DEL</button></div>
                 </div>)
         });
