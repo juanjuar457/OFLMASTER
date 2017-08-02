@@ -38,7 +38,7 @@ export const addMaterial = (material) => dispatch => {
 
 export const DEL_MATERIAL = 'DEL_MATERIAL';
 export const delMaterial = (id) => dispatch => {
-    console.log("got to the del- What now??")
+    console.log("got to the del- What now??");
     //change this for axios to use the delte, isomorphic fetch has no delete!
     fetch(`/deletematerial/${id}`,  {method: "DELETE"})
     .then(res => {

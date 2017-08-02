@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 // import OflModal from './oflmodal'; // not being imported atm
 import {addMaterial} from '../actions/index';
 import request from 'superagent';
+import Select from 'react-select';
 
 class MaterialForm extends React.Component {
     constructor(props){
@@ -17,9 +18,10 @@ class MaterialForm extends React.Component {
             productName: this.refs.productName.value,
             catalogNumber: this.refs.catalogNumber.value,
             units: this.refs.units.value,
-            unitSize: this.state.unitOptions.value
+            unitSize: 12
         };
-        console.log(unitSize);
+        // unitSize: this.state.unitOptions.value
+        // console.log(unitSize);
         this.props.dispatch(addMaterial(material));
         this.clearForm();
     }
@@ -41,13 +43,14 @@ class MaterialForm extends React.Component {
 
      handleChange(e)  {
         console.log(e.target.value);
-        let value = this.state.unitTypes.filter((unit) => {
+        let value = unitTypes.filter((unit) => {
             return unity.key === e.target.value
         });
         console.log(value[0].value);
     };
 
     render() {
+
         let unitTypes = [
             "grams",
             "kilograms",
@@ -57,10 +60,11 @@ class MaterialForm extends React.Component {
 
 
         let unitOptions = unitTypes.map((unitType, index)=> {
-                return (<option key={index} value={unitType}>{unitType}</option>
+                return (<option key ={index} value={unitType}>{unitType}</option>
                )
         });
-        console.log(unitOptions);  //4 NULL OBJECTS!
+        console.log(unitOptions);
+        //try options a different way..
 
         return (
             <div id="inputlist" className="row">
@@ -89,6 +93,25 @@ const mapStateToProps = state => {
 };
 
 export default connect()(MaterialForm);
+
+
+
+
+//unused drop down code
+// let options = [
+//     // ...
+//     { value: 'Stanford University', label: 'Stanford' },
+//     // ...
+// ];
+//
+// const field = ({ options }) => (
+//     <Select
+//         name="university"
+//         value="one"
+//         options={options}
+//         onChange={val => console.log(val)}
+//     />
+// );
 
 //unused ajax call
 // $.ajax( {
