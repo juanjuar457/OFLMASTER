@@ -63,6 +63,12 @@ class MaterialForm extends React.Component {
                 return (<option key ={index} value={unitType}>{unitType}</option>
                )
         });
+
+        // let getUnits = unitTypes.filter.val((unitType, index) => {
+        //     return(fil)
+        // }
+
+        // console.log(filterdUnits.val);
         console.log(unitOptions);
         //try options a different way..
 
