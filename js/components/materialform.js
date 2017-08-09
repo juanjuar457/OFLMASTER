@@ -8,6 +8,7 @@ import Select from 'react-select';
 class MaterialForm extends React.Component {
     constructor(props){
         super(props);
+        this.state = { unitSize: ''};
 
     }
 
@@ -18,7 +19,7 @@ class MaterialForm extends React.Component {
             productName: this.refs.productName.value,
             catalogNumber: this.refs.catalogNumber.value,
             units: this.refs.units.value,
-            unitSize: 12
+            unitSize: this.refs.unitSize.value  //fix this stupid line!!! 
         };
         // unitSize: this.state.unitOptions.value
         // console.log(unitSize);
@@ -34,19 +35,25 @@ class MaterialForm extends React.Component {
         this.refs.units.value = "";
     }
 
-    sendData() {
-        request.get('/')
-            .end(function (err, res){
-                console.log("ajax here");
-            });
-    }
+    // sendData() {
+    //     request.get('/')
+    //         .end(function (err, res){
+    //             console.log("ajax here");
+    //         });
+    // }
 
-     handleChange(e)  {
-        console.log(e.target.value);
-        let value = unitTypes.filter((unit) => {
-            return unity.key === e.target.value
-        });
-        console.log(value[0].value);
+     handleChange(event)  {
+        let unitUp = event.target.value;
+        console.log(unitUp)
+            return unitUp
+
+        // console.log(e.target.value);
+
+
+        // let value = unitTypes.filter((unit) => {
+        //     return unity.key === e.target.value
+        // });
+
     };
 
     render() {
@@ -58,18 +65,18 @@ class MaterialForm extends React.Component {
             "misc"
         ];
 
-
         let unitOptions = unitTypes.map((unitType, index)=> {
                 return (<option key ={index} value={unitType}>{unitType}</option>
                )
         });
 
-        // let getUnits = unitTypes.filter.val((unitType, index) => {
-        //     return(fil)
-        // }
+        let getUnits = unitTypes.filter((unitType, index) => {
+            return(<div>{getUnits}</div>)
+        });
 
-        // console.log(filterdUnits.val);
+        console.log(getUnits);
         console.log(unitOptions);
+        // console.log(unitOptions.props)
         //try options a different way..
 
         return (
@@ -79,7 +86,10 @@ class MaterialForm extends React.Component {
                 <input  className="col-md-2" id="productName" type="text" ref="productName" placeholder="Enter Product Name" />
                 <input  className="col-md-2" id="catalogNumber" type="text" ref="catalogNumber" placeholder="Enter Catalog Numnber" />
                 <input  className="col-md-1" id="units" type="text" ref="units" placeholder="Enter Units" />
-                <select onChange={this.handleChange} className="col-md-2" id="unitTypes">
+                <select
+                    onChange={this.handleChange}
+                    className="col-md-2"
+                    id="unitTypes">
                     {unitOptions}
                 </select>
                 <button  className="col-md-1" type="button" onClick={this.addMaterial.bind(this)}>add</button>
@@ -99,9 +109,6 @@ const mapStateToProps = state => {
 };
 
 export default connect()(MaterialForm);
-
-
-
 
 //unused drop down code
 // let options = [
