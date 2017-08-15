@@ -19,7 +19,7 @@ class MaterialForm extends React.Component {
             productName: this.refs.productName.value,
             catalogNumber: this.refs.catalogNumber.value,
             units: this.refs.units.value,
-            unitSize: this.refs.unitSize.value  //fix this stupid line!!! 
+            unitType: unitOptions[0].props.value
         };
         // unitSize: this.state.unitOptions.value
         // console.log(unitSize);
@@ -44,8 +44,8 @@ class MaterialForm extends React.Component {
 
      handleChange(event)  {
         let unitUp = event.target.value;
-        console.log(unitUp)
-            return unitUp
+        console.log(unitUp);
+            return '<div>' + unitUp +'</div>'
 
         // console.log(e.target.value);
 
@@ -69,13 +69,14 @@ class MaterialForm extends React.Component {
                 return (<option key ={index} value={unitType}>{unitType}</option>
                )
         });
-
+        //this gets my value, but I need to be able to do it in the unitOptions return to change when it happens. BB can help here...
+        //TODO: change color scheme as well, change over the webpack later, its a POS atm
         let getUnits = unitTypes.filter((unitType, index) => {
             return(<div>{getUnits}</div>)
         });
 
-        console.log(getUnits);
-        console.log(unitOptions);
+        console.log(getUnits[0]);
+        console.log(unitOptions[0].props.value);
         // console.log(unitOptions.props)
         //try options a different way..
 
