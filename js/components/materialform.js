@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import OflModal from './oflmodal'; // not being imported atm
 import {addMaterial} from '../actions/index';
 import request from 'superagent';
 import Select from 'react-select';
@@ -19,8 +18,7 @@ class MaterialForm extends React.Component {
             productName: this.refs.productName.value,
             catalogNumber: this.refs.catalogNumber.value,
             units: this.refs.units.value,
-            unitType: unitOptions[0].props.value
-        };
+            unitSize: this.handleChange(event) };
         // unitSize: this.state.unitOptions.value
         // console.log(unitSize);
         this.props.dispatch(addMaterial(material));
@@ -42,9 +40,9 @@ class MaterialForm extends React.Component {
     //         });
     // }
 
-     handleChange(event)  {
+     handleChange(event){
         let unitUp = event.target.value;
-        console.log(unitUp);
+        // console.log(unitUp);
             return '<div>' + unitUp +'</div>'
 
         // console.log(e.target.value);
@@ -66,17 +64,24 @@ class MaterialForm extends React.Component {
         ];
 
         let unitOptions = unitTypes.map((unitType, index)=> {
-                return (<option key ={index} value={unitType}>{unitType}</option>
+                return (<option
+                        key ={index}
+                        value={unitType}>
+                        {unitType}
+                        </option>
                )
         });
         //this gets my value, but I need to be able to do it in the unitOptions return to change when it happens. BB can help here...
         //TODO: change color scheme as well, change over the webpack later, its a POS atm
-        let getUnits = unitTypes.filter((unitType, index) => {
-            return(<div>{getUnits}</div>)
-        });
+        // let getUnits = unitTypes.filter((unitType, index) => {
+        //     return(<div>{getUnits}</div>)
+        // });
 
-        console.log(getUnits[0]);
+        let getUnits = unitOptions[0].props.value;
+
+        console.log(getUnits);
         console.log(unitOptions[0].props.value);
+        //TODO: get chosen unit rendered somewhere..
         // console.log(unitOptions.props)
         //try options a different way..
 
@@ -89,7 +94,7 @@ class MaterialForm extends React.Component {
                 <input  className="col-md-1" id="units" type="text" ref="units" placeholder="Enter Units" />
                 <select
                     onChange={this.handleChange}
-                    className="col-md-2"
+                    className="col-md-2 delBtn"
                     id="unitTypes">
                     {unitOptions}
                 </select>
