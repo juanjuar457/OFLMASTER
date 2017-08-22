@@ -19,15 +19,7 @@ const initialState = {
 
 
 const oflMaterialReducer = (state=initialState, action) => {
-    if (action.type === actions.ADD_MATERIAL_SUCCESS) {
-        console.log("not delete");
-        console.log(state);
-        return Object.assign({}, state, {
-            materials: [...state.materials, {...action.material, id: state.materials.length++}]
-        });
-    }
-
-    else if (action.type === actions.DEL_MATERIAL){
+   if (action.type === actions.DEL_MATERIAL){
         console.log("call delete");
         let materials = state.materials.filter(
             (item) => {

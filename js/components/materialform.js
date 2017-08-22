@@ -8,17 +8,20 @@ class MaterialForm extends React.Component {
     constructor(props){
         super(props);
         this.state = { unitSize: ''};
-
+        this.selectedUnit = null;
+        this.handleChange = this.handleChange.bind(this);
     }
 
+    //change handleChange to handeSelectedUnit func name
     addMaterial() {
+        // let unitSize =
         let material = {
             vendor: this.refs.vendor.value,
             quantity: this.refs.quantity.value,
             productName: this.refs.productName.value,
             catalogNumber: this.refs.catalogNumber.value,
             units: this.refs.units.value,
-            unitSize: this.handleChange(event) };
+            unitSize: this.selectedUnit };
         // unitSize: this.state.unitOptions.value
         // console.log(unitSize);
         this.props.dispatch(addMaterial(material));
@@ -33,26 +36,7 @@ class MaterialForm extends React.Component {
         this.refs.units.value = "";
     }
 
-    // sendData() {
-    //     request.get('/')
-    //         .end(function (err, res){
-    //             console.log("ajax here");
-    //         });
-    // }
 
-     handleChange(event){
-        let unitUp = event.target.value;
-        // console.log(unitUp);
-            return '<div>' + unitUp +'</div>'
-
-        // console.log(e.target.value);
-
-
-        // let value = unitTypes.filter((unit) => {
-        //     return unity.key === e.target.value
-        // });
-
-    };
 
     render() {
 
@@ -62,22 +46,30 @@ class MaterialForm extends React.Component {
             "milliliters",
             "misc"
         ];
+        let bradenSucks = 1
+        if(bradenSucks ){
+            bradenSucks = "you suck"
+        }
 
         let unitOptions = unitTypes.map((unitType, index)=> {
                 return (<option
                         key ={index}
-                        value={unitType}>
+                        value={unitType}
+                        onChange = {this.handleChange}>
                         {unitType}
                         </option>
                )
         });
         //this gets my value, but I need to be able to do it in the unitOptions return to change when it happens. BB can help here...
-        //TODO: change color scheme as well, change over the webpack later, its a POS atm
         // let getUnits = unitTypes.filter((unitType, index) => {
         //     return(<div>{getUnits}</div>)
         // });
 
         let getUnits = unitOptions[0].props.value;
+        let renderUnits = () => {
+            return(<div>{getUnits}</div>)
+        };
+
 
         console.log(getUnits);
         console.log(unitOptions[0].props.value);
@@ -103,6 +95,13 @@ class MaterialForm extends React.Component {
             </div>
         );
     }
+
+
+    handleChange(event){
+        this.selectedUnit = event.target.value;
+        console.log(this.selectedUnit);
+    };
+
 }
 MaterialForm.defaultProps = {
     title: 'Order For Later'

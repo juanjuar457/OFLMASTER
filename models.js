@@ -47,8 +47,6 @@ MaterialSchema.methods.apiRepr = function() {
   };
 };
 
-
-
 //not in use in node capstone 4/26
 UserSchema.methods.apiRepr = function() {
   return {

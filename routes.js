@@ -7,6 +7,7 @@ const User = models.User;
 
 module.exports = {
     deleteMaterial: (req, res) => {
+        console.log(req.params)
         Material
             .findByIdAndRemove(req.params.id)
             .exec()

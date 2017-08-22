@@ -21,7 +21,7 @@ export const addMaterial = (material) => dispatch => {
             return res.json();
         })
         .then(material => {
-            dispatch(addMaterialSuccess(material));
+            dispatch(fetchMaterials());
         });
 };
 
@@ -42,6 +42,7 @@ export const delMaterial = (id) => dispatch => {
     //change this for axios to use the delte, isomorphic fetch has no delete!
     fetch(`/deletematerial/${id}`,  {method: "DELETE"})
     .then(res => {
+        console.log(res);
         return res.json();
     })
     .then(id => {
@@ -50,22 +51,17 @@ export const delMaterial = (id) => dispatch => {
     });
 };
 
-//for ray rsmith  check on slack
-//send req to endpoint, modelname.find send back as json res
-
 export const DEL_MATERIAL_SUCCESS = 'DEL_MATERIAL_SUCCESS';
 export const delMaterialSuccess = id => ({
     type: DEL_MATERIAL_SUCCESS,
     id
 });
 
-
 export const FETCH_MATERIALS_SUCCESS = 'FETCH_MATERIALS_SUCCESS';
 export const fetchMaterialsSuccess = materials => ({
     type: FETCH_MATERIALS_SUCCESS,
     materials
 });
-
 
 export const FETCH_MATERIALS = 'FETCH_MATERIALS';
 export const fetchMaterials = () => dispatch => {
@@ -75,6 +71,7 @@ export const fetchMaterials = () => dispatch => {
         }
         return res.json();
     }).then(material => {
+        console.log(material);
         dispatch(fetchMaterialsSuccess(material));
     });
 };

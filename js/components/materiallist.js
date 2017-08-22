@@ -24,6 +24,7 @@ class MaterialList extends React.Component {
         this.props.dispatch(fetchMaterials());
     }
     delMaterial(id) {
+        console.log(id)
         this.props.dispatch(delMaterial(id));
     }
 
