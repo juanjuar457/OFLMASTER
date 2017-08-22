@@ -43,12 +43,8 @@ export const delMaterial = (id) => dispatch => {
     fetch(`/deletematerial/${id}`,  {method: "DELETE"})
     .then(res => {
         console.log(res);
-        return res.json();
-    })
-    .then(id => {
-        console.log(id);
         dispatch(fetchMaterials());
-    });
+    })
 };
 
 export const DEL_MATERIAL_SUCCESS = 'DEL_MATERIAL_SUCCESS';
